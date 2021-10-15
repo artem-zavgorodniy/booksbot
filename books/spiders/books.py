@@ -27,4 +27,5 @@ class BooksSpider(scrapy.Spider):
             "//div[@id='product_description']/following-sibling::p/text()"
         ).extract_first()
         item['price'] = response.css('p.price_color ::text').extract_first()
+        item['url'] = response.url
         yield item
